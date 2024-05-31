@@ -3,6 +3,8 @@ using Store.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddRedisOutputCache("redis");
+
 builder.AddServiceDefaults();
 
 
@@ -20,7 +22,7 @@ builder.Services.AddRazorComponents()
 
 var app = builder.Build();
 
-
+app.UseOutputCache();
 
 app.MapDefaultEndpoints();
 
